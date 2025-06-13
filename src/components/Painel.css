@@ -1,0 +1,271 @@
+/* --- TEMA NUVEM (DOCKER/VIRTUALIZAÇÃO) --- */
+
+/* Definindo as variáveis de cor do nosso tema */
+.main {
+  --bg-color: #1a202c; /* Fundo azul-noite/cinza escuro */
+  --primary-color: #2496ed; /* Azul Docker */
+  --card-bg-color: #2d3748; /* Cor dos cards e inputs */
+  --text-color: #f8f8f8; /* Texto principal (branco) */
+  --text-secondary-color: #c4c7c5; /* Texto secundário (cinza claro) */
+  --font-mono: 'Fira Code', monospace; /* Fonte com tema "código" */
+}
+
+.main {
+  flex: 1;
+  min-height: 100vh;
+  padding-bottom: 15vh;
+  position: relative;
+  background-color: var(--bg-color); /* Aplicando a cor de fundo */
+  color: var(--text-color); /* Cor de texto padrão */
+}
+
+/* --- Barra de Navegação Superior --- */
+.main .nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 22px;
+  padding: 20px;
+  color: var(--text-secondary-color);
+}
+
+.main .nav:hover {
+  cursor: pointer;
+}
+
+.main .nav svg { /* Estilizando o ícone de usuário SVG */
+  color: var(--text-secondary-color);
+}
+
+
+/* --- Container Principal --- */
+.main-container {
+  max-width: 900px;
+  margin: auto;
+}
+
+/* --- Saudação Principal "Olá, Dev." --- */
+.main .greet {
+  margin: 0px 30px;
+  font-size: 48px;
+  color: var(--text-secondary-color);
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+
+.main .greet span {
+  color: var(--primary-color);
+}
+
+/* --- Grid de Cards de Sugestão --- */
+.main .cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* --- Estilo dos "Contêineres" de Sugestão --- */
+.main .card {
+  height: 200px;
+  padding: 20px;
+  background-color: var(--card-bg-color);
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #4a5568;
+}
+
+.main .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(36, 150, 237, 0.2);
+  border-color: var(--primary-color);
+}
+
+.main .card p {
+  color: var(--text-color);
+  font-size: 17px;
+  font-family: var(--font-mono);
+}
+
+/* --- NOVAS REGRAS PARA OS ÍCONES --- */
+
+/* Círculo que fica no fundo do ícone no card */
+.main .card .card-icon {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  bottom: 15px;
+  right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* O ícone SVG em si, dentro do círculo */
+.main .card .card-icon svg {
+  width: 20px;
+  height: 20px;
+  color: white; /* Cor do ícone */
+}
+
+
+/* --- Barra de Pesquisa Inferior --- */
+.main-bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  max-width: 900px;
+  padding: 0px 20px;
+  margin: auto;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background-color: var(--card-bg-color);
+  padding: 10px 20px;
+  border-radius: 50px;
+  border: 1px solid #4a5568;
+}
+
+/* O ícone de avião de papel (enviar) na barra de pesquisa */
+.search-box svg {
+  width: 20px;
+  height: 20px;
+  color: var(--text-secondary-color);
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+.search-box svg:hover {
+  color: var(--primary-color);
+}
+
+
+.search-box input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 8px;
+  font-size: 18px;
+  color: var(--text-color);
+}
+
+.search-box input::placeholder {
+  color: var(--text-secondary-color);
+}
+
+.search-box div {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.main .bottom-info {
+  font-size: 13px;
+  margin: 15px auto;
+  text-align: center;
+  font-weight: 300;
+  color: var(--text-secondary-color);
+}
+
+/* --- Animação de Loading --- */
+.loader hr {
+  border-radius: 4px;
+  border: none;
+  background-color: var(--card-bg-color);
+  background: linear-gradient(
+    to right,
+    var(--card-bg-color),
+    var(--primary-color),
+    var(--card-bg-color)
+  );
+  background-size: 800px 50px;
+  height: 20px;
+  animation: loader 3s infinite linear;
+}
+
+@keyframes loader {
+  0% {
+    background-position: -800px 0px;
+  }
+  100% {
+    background-position: 800px 0px;
+  }
+}
+
+/* --- Seção de Resultados --- */
+.result {
+  padding: 0px 5%;
+  max-height: 70vh;
+  overflow-y: scroll;
+}
+.result::-webkit-scrollbar {
+  display: none;
+}
+.result-title {
+  margin: 40px 0px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.result-title svg { /* ícone de usuário no título do resultado */
+  width: 32px;
+  height: 32px;
+  color: var(--text-secondary-color);
+}
+
+.result-data {
+  display: flex;
+  align-items: start;
+  gap: 20px;
+}
+
+.result-data svg { /* ícone do bot (docker) na resposta */
+   color: var(--primary-color);
+}
+
+
+.result-data p {
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+/* --- Ajustes para Telas Pequenas --- */
+@media (max-width: 600px) {
+  .main-bottom input {
+    flex: none;
+    width: 150px;
+  }
+  .search-box {
+    padding: 5px 10px;
+  }
+  .search-box div {
+    gap: 5px;
+  }
+  .greet {
+    font-size: 40px;
+    margin: 40px 0px;
+    padding-left: 22px;
+  }
+  .main .cards {
+    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+  .main .card {
+    height: 180px;
+    padding: 15px;
+  }
+  .main .card p {
+    font-size: 15px;
+  }
+}
